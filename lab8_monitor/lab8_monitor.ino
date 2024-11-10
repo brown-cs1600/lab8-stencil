@@ -7,7 +7,7 @@ void setup() {
   Serial1.begin(9600);
   Serial1.setTimeout(10);
   pinMode(7, OUTPUT); // the status LED
-  pinMode(4, INPUT);  // the AC LED
+  pinMode(3, INPUT);  // the AC LED
   digitalWrite(7, HIGH); // the potentiometer
 }
 
