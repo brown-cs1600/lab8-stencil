@@ -1,5 +1,5 @@
 int MON_LED = 7;
-int AC_LED = 4;
+int AC_LED = 3;
 int POT = A1;
 
 void setup() {
@@ -7,8 +7,8 @@ void setup() {
   while (!Serial);
   Serial1.begin(9600);
   Serial1.setTimeout(10);
-  pinMode(7, OUTPUT);
-  pinMode(4, INPUT);
+  pinMode(MON_LED, OUTPUT);
+  pinMode(AC_LED, INPUT);
 }
 
 void loop() {
