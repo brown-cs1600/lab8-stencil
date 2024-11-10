@@ -1,6 +1,6 @@
-const int DES_TEMP = 8;
-const int CUR_TEMP = 7;
-const int AC_OUT = 5;
+const int DES_TEMP = 6;
+const int CUR_TEMP = 5;
+const int AC_OUT = 3;
 
 const int BUTTON = 4;
 
@@ -8,10 +8,9 @@ const int DIAL = A1;
 
 
 void setup() {
-  pinMode(DES_TEMP, OUTPUT);
-  pinMode(CUR_TEMP, OUTPUT);
   pinMode(AC_OUT, OUTPUT);
   pinMode(BUTTON, INPUT);
+  analogWriteResolution(8);
 
   Serial.begin(9600);
   while(!Serial);
@@ -26,22 +25,27 @@ void loop() {
   Serial.print("button: ");
   Serial.println(digitalRead(BUTTON));
   
-  if (i < 5) {
-    digitalWrite(DES_TEMP, HIGH);
-    digitalWrite(CUR_TEMP, LOW);
+  if (i < 4) {
+    analogWrite(DES_TEMP, 0);
+    analogWrite(CUR_TEMP, 255);
     digitalWrite(AC_OUT, LOW);  
     i++;
-  } else if (i < 10) {
-    digitalWrite(DES_TEMP, LOW);
-    digitalWrite(CUR_TEMP, HIGH);
+  } else if (i < 8) {
+    analogWrite(DES_TEMP, 127);
+    analogWrite(CUR_TEMP, 127);
     digitalWrite(AC_OUT, LOW);
     i++;
-  } else {
-    digitalWrite(DES_TEMP, LOW);
-    digitalWrite(CUR_TEMP, LOW);
+  } else if (i < 12) {
+    analogWrite(DES_TEMP, 255);
+    analogWrite(CUR_TEM, 0);
     digitalWrite(AC_OUT, HIGH);
     i++;
-    if (i == 15) {
+  } else {
+    analogWrite(DES_TEMP, 127);
+    analogWrite(CUR_TEMP, 127);
+    digitalWrite(AC_OUT, HIGH);
+    i++;
+    if (i == 16) {
       i = 0;
     }
   }
