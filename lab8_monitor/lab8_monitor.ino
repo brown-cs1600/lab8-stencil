@@ -91,6 +91,7 @@ void loop() {
     Serial.print("Potentiometer: ");
     Serial.println(potVal);
 
+    
     updateMonitor(receivedMsg, {ledVal, potVal, lastPotChange}, millis());
   }
 }
