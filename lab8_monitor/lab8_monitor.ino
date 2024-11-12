@@ -7,7 +7,7 @@ void setup() {
   Serial1.begin(9600);
   Serial1.setTimeout(10);
   pinMode(7, OUTPUT); // the status LED
-  pinMode(3, INPUT);  // the AC LED
+  pinMode(4, INPUT);  // the AC LED
   digitalWrite(7, HIGH);
   analogReadResolution(10); // the potentiometer
 }
@@ -85,7 +85,7 @@ void loop() {
   // transition the FSM
   if(doMonitor) {
     Serial.print("AC LED: ");
-    bool ledVal = digitalRead(3) == HIGH;
+    bool ledVal = digitalRead(4) == HIGH;
     Serial.println(ledVal);
     
     Serial.print("Potentiometer: ");
