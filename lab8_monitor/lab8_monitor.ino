@@ -16,8 +16,9 @@ void loop() {
   static int prevPotVal = analogRead(A1);
   static unsigned long lastPotChange = millis();
   static char curBuf[14];
+
+  delay(1);
   
-  delay(40);
   bool doMonitor = false; // we only want to monitor if we've received a message
   sysMsg receivedMsg;
 
